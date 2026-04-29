@@ -71,15 +71,16 @@ body{
 }
 
 /* Hero */
-.hero{display:flex;flex-direction:column;gap:18px;align-items:stretch}
+.hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
 @media(min-width:980px){
-  .hero{flex-direction:row;align-items:flex-start}
-  .hero-left{flex:1;padding-right:12px;min-width:0}
-  .hero-right{width:100%;max-width:420px;min-width:0}
+  .hero{grid-template-columns: minmax(0,1.8fr) minmax(0,360px)}
+  .hero-left{padding-right:12px;min-width:0}
+  .hero-right{width:100%;max-width:360px;min-width:0;display:flex;justify-content:center}
 }
-.lead{font-size:1.02rem;color:#d9e8f6;line-height:1.5}
-.contact-line{list-style:none;padding:0;margin:14px 0 8px 0;display:flex;flex-direction:column;gap:10px;line-height:1.6}
-.contact-line li{display:flex;flex-wrap:wrap;gap:0.5rem;align-items:flex-start;min-width:0}
+.lead{font-size:1.02rem;color:#d9e8f6;line-height:1.7;overflow-wrap:break-word;word-break:normal}
+.contact-line{list-style:none;padding:0;margin:14px 0 8px 0;display:block;line-height:1.75}
+.contact-line li{margin-bottom:0.75rem;min-width:0}
+.contact-line li:last-child{margin-bottom:0}
 .contact-line a{color:var(--accent2);text-decoration:none}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .cta{background:linear-gradient(90deg,var(--accent2),var(--accent1));padding:10px 14px;border-radius:10px;color:#04111a;text-decoration:none;font-weight:600}
@@ -103,8 +104,8 @@ body{
 .exp ul li,
 .proj-body .muted,
 .ref p {
-  overflow-wrap:anywhere;
-  word-break:break-word;
+  overflow-wrap:break-word;
+  word-break:normal;
 }
 
 /* Skills grid */
@@ -119,6 +120,7 @@ body{
 @media(min-width:1100px){.projects-grid{grid-template-columns:repeat(4,1fr)}}
 
 .project-card{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);min-height:150px;min-width:0}
+@media(max-width:900px){.project-card{flex-direction:column}}
 .thumb{width:120px;height:80px;border-radius:8px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,0.03)}
 .proj-body{min-width:0}
 .proj-body h4{margin:0 0 8px 0}
@@ -135,7 +137,7 @@ body{
 /* refs grid */
 .refs-grid{display:grid;grid-template-columns:1fr;gap:10px}
 @media(min-width:720px){.refs-grid{grid-template-columns:repeat(3,1fr)}}
-.ref{background:rgba(255,255,255,0.015);padding:10px;border-radius:10px;min-width:0;word-break:break-word;overflow-wrap:anywhere}
+.ref{background:rgba(255,255,255,0.015);padding:10px;border-radius:10px;min-width:0;word-break:break-word;overflow-wrap:break-word;line-height:1.5}
 
 /* contact form */
 .contact-form{display:grid;gap:10px;margin-top:10px}
