@@ -56,7 +56,7 @@ body{
 /* Main grid */
 .main-grid{display:grid;grid-template-columns:1fr;gap:20px;padding:28px 24px}
 @media(min-width:980px){
-  .main-grid{grid-template-columns: 1.25fr 520px}
+  .main-grid{grid-template-columns: minmax(0,1.25fr) minmax(0,520px)}
 }
 
 /* Cards */
@@ -67,18 +67,19 @@ body{
   border-radius:var(--radius);
   box-shadow: 0 8px 24px rgba(2,6,23,0.6);
   overflow:hidden;
+  min-width:0;
 }
 
 /* Hero */
 .hero{display:flex;flex-direction:column;gap:18px;align-items:stretch}
 @media(min-width:980px){
-  .hero{flex-direction:row;align-items:stretch}
-  .hero-left{flex:1;padding-right:12px}
-  .hero-right{width:420px}
+  .hero{flex-direction:row;align-items:flex-start}
+  .hero-left{flex:1;padding-right:12px;min-width:0}
+  .hero-right{width:100%;max-width:420px;min-width:0}
 }
 .lead{font-size:1.02rem;color:#d9e8f6;line-height:1.5}
 .contact-line{list-style:none;padding:0;margin:14px 0 8px 0;display:flex;flex-direction:column;gap:10px;line-height:1.6}
-.contact-line li{display:flex;flex-wrap:wrap;gap:0.5rem;align-items:flex-start}
+.contact-line li{display:flex;flex-wrap:wrap;gap:0.5rem;align-items:flex-start;min-width:0}
 .contact-line a{color:var(--accent2);text-decoration:none}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .cta{background:linear-gradient(90deg,var(--accent2),var(--accent1));padding:10px 14px;border-radius:10px;color:#04111a;text-decoration:none;font-weight:600}
@@ -86,15 +87,25 @@ body{
 .download{background:transparent;border:0;color:var(--muted);text-decoration:underline;font-size:14px}
 
 /* Profile card */
-.profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px}
+.profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;width:100%}
 .profile-header{display:flex;gap:12px;align-items:center}
 .avatar{width:68px;height:68px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(255,255,255,0.03)}
-.quick-stats{display:flex;gap:10px;margin-top:12px}
+.quick-stats{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 .quick-stats .stat{font-weight:700;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);padding:8px 12px;border-radius:10px;color:var(--accent1)}
 
 /* Chips */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chips span{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+.lead,
+.contact-line,
+.skill p,
+.exp ul li,
+.proj-body .muted,
+.ref p {
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
 
 /* Skills grid */
 .skill-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:12px}
@@ -107,10 +118,11 @@ body{
 @media(min-width:720px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1100px){.projects-grid{grid-template-columns:repeat(4,1fr)}}
 
-.project-card{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);min-height:150px}
+.project-card{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);min-height:150px;min-width:0}
 .thumb{width:120px;height:80px;border-radius:8px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,0.03)}
+.proj-body{min-width:0}
 .proj-body h4{margin:0 0 8px 0}
-.proj-body .muted{margin:0 0 10px 0;line-height:1.55}
+.proj-body .muted{margin:0 0 10px 0;line-height:1.55;overflow-wrap:anywhere}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tags span{background:rgba(102,210,255,0.06);padding:4px 8px;border-radius:6px;font-size:12px;color:var(--muted)}
 
@@ -123,7 +135,7 @@ body{
 /* refs grid */
 .refs-grid{display:grid;grid-template-columns:1fr;gap:10px}
 @media(min-width:720px){.refs-grid{grid-template-columns:repeat(3,1fr)}}
-.ref{background:rgba(255,255,255,0.015);padding:10px;border-radius:10px}
+.ref{background:rgba(255,255,255,0.015);padding:10px;border-radius:10px;min-width:0;word-break:break-word;overflow-wrap:anywhere}
 
 /* contact form */
 .contact-form{display:grid;gap:10px;margin-top:10px}
